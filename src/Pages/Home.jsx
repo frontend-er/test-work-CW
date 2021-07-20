@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import EnhancedTable from "./../components/DataTable";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectTagsItems } from "./../store/ducks/tags/selectors";
 
 
@@ -21,10 +21,9 @@ export const Home = (props) => {
 const classes = useStylesSignIn();
 
 
-  const items = useSelector(selectTagsItems);
-  const dispatch = useDispatch();
+  	const items = useSelector(selectTagsItems);
 
-
+   // Подсчет кредитов и дебитов для круговой диаграммы , мы считаем сумму всех транзакции и сумму всех долгов
 	const credit =	items.map( item => (item.credit_amount));
 	let creditSum = 0;
 	for (let i = 0; i< credit.length; i++) {
@@ -93,6 +92,8 @@ const classes = useStylesSignIn();
       </div>
 
 			<section>
+
+				{/*  Выводим таблицу с данными поолучеными от сервера*/}
 				<EnhancedTable/>
 			</section>
 

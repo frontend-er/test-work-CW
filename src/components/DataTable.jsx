@@ -213,9 +213,13 @@ export default function EnhancedTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
+
+  // Получаем массив данных от сервера 
+
   const items = useSelector(selectTagsItems);
   const dispatch = useDispatch();
 
+  // Записываем данные в строки и в таблицу 
 
 
   const rows = items.map((item) => (createData(item.sender, item.date, item.debit_amount, item.credit_amount, item.reciver )))
@@ -225,7 +229,7 @@ export default function EnhancedTable() {
 
 
 
-
+  // Используем хук чтобы отправить экшн на получение данных оот сервера и записываем всю информацию в стэйт
  React.useEffect(() => {
   dispatch(fetchTags())
 
