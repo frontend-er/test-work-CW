@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import EnhancedTable from "./../components/DataTable";
 import { useSelector } from "react-redux";
 import { selectTagsItems } from "./../store/ducks/tags/selectors";
+import BasicFilteringGrid from "./../components/Grid";
 
 
 export const useStylesSignIn = makeStyles((theme) => ({
@@ -94,9 +95,9 @@ const classes = useStylesSignIn();
 			<section>
 
 				{/*  Выводим таблицу с данными поолучеными от сервера*/}
-				<EnhancedTable/>
-			</section>
+				<BasicFilteringGrid />
 
+			</section>
 	</div>
 
    );
