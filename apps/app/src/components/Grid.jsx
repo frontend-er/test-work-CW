@@ -3,6 +3,7 @@ import { DataGrid } from '@material-ui/data-grid';
 import { useSelector, useDispatch } from "react-redux";
 import { selectTagsItems } from "./../store/ducks/tags/selectors";
 import { fetchTags } from "./../store/ducks/tags/actionCreators";
+import { useDemoData } from '@material-ui/x-grid-data-generator';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 90 },
@@ -17,6 +18,7 @@ const columns = [
     headerName: 'Date',
     width: 150,
     editable: true,
+    type: 'date',
   },
 
   {
@@ -62,7 +64,8 @@ export default function DataGridDemo() {
   // Записываем данные в строки и в таблицу 
 
 
-  const rows = items.map((item) => (createData(item.id ,item.sender, item.date, item.debit_amount, item.credit_amount, item.reciver )))
+  const rows = items.map((item) => (createData(item.id ,item.sender,item.date, item.debit_amount, item.credit_amount, item.reciver )))
+
 
 
 
