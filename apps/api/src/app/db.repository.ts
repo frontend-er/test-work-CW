@@ -4625,4 +4625,6 @@ const transactions = [
 		"reciver": "Union Finance"
 	}
 ]
-export const getAlls = () => transactions;
+
+
+export const getData = () => transactions;

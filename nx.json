@@ -1,5 +1,5 @@
 {
-  "npmScope": "app-test",
+  "npmScope": "cw",
   "affected": {
     "defaultBase": "master"
   },
@@ -30,12 +30,12 @@
     "api": {
       "tags": []
     },
-    "app": {
+    "cw": {
       "tags": []
     },
-    "app-e2e": {
+    "cw-e2e": {
       "tags": [],
-      "implicitDependencies": ["app"]
+      "implicitDependencies": ["cw"]
     }
   }
 }

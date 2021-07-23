@@ -51,22 +51,22 @@
         }
       }
     },
-    "app": {
-      "root": "apps/app",
-      "sourceRoot": "apps/app/src",
+    "cw": {
+      "root": "apps/cw",
+      "sourceRoot": "apps/cw/src",
       "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/apps/app",
-            "index": "apps/app/src/index.html",
-            "main": "apps/app/src/main.tsx",
-            "polyfills": "apps/app/src/polyfills.ts",
-            "tsConfig": "apps/app/tsconfig.app.json",
-            "assets": ["apps/app/src/favicon.ico", "apps/app/src/assets"],
-            "styles": ["apps/app/src/styles.scss"],
+            "outputPath": "dist/apps/cw",
+            "index": "apps/cw/src/index.html",
+            "main": "apps/cw/src/main.tsx",
+            "polyfills": "apps/cw/src/polyfills.ts",
+            "tsConfig": "apps/cw/tsconfig.app.json",
+            "assets": ["apps/cw/src/favicon.ico", "apps/cw/src/assets"],
+            "styles": ["apps/cw/src/styles.css"],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
@@ -74,8 +74,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/app/src/environments/environment.ts",
-                  "with": "apps/app/src/environments/environment.prod.ts"
+                  "replace": "apps/cw/src/environments/environment.ts",
+                  "with": "apps/cw/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -98,12 +98,13 @@
         "serve": {
           "executor": "@nrwl/web:dev-server",
           "options": {
-            "buildTarget": "app:build",
-            "hmr": true
+            "buildTarget": "cw:build",
+            "hmr": true,
+            "proxyConfig": "apps/cw/proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "buildTarget": "app:build:production",
+              "buildTarget": "cw:build:production",
               "hmr": false
             }
           }
@@ -111,41 +112,41 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/app/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": ["apps/cw/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/app"],
+          "outputs": ["coverage/apps/cw"],
           "options": {
-            "jestConfig": "apps/app/jest.config.js",
+            "jestConfig": "apps/cw/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "app-e2e": {
-      "root": "apps/app-e2e",
-      "sourceRoot": "apps/app-e2e/src",
+    "cw-e2e": {
+      "root": "apps/cw-e2e",
+      "sourceRoot": "apps/cw-e2e/src",
       "projectType": "application",
       "targets": {
         "e2e": {
           "executor": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/app-e2e/cypress.json",
-            "tsConfig": "apps/app-e2e/tsconfig.e2e.json",
-            "devServerTarget": "app:serve"
+            "cypressConfig": "apps/cw-e2e/cypress.json",
+            "tsConfig": "apps/cw-e2e/tsconfig.e2e.json",
+            "devServerTarget": "cw:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "app:serve:production"
+              "devServerTarget": "cw:serve:production"
             }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/app-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": ["apps/cw-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -157,18 +158,18 @@
   "generators": {
     "@nrwl/react": {
       "application": {
-        "style": "scss",
+        "style": "css",
         "linter": "eslint",
         "babel": true
       },
       "component": {
-        "style": "scss"
+        "style": "css"
       },
       "library": {
-        "style": "scss",
+        "style": "css",
         "linter": "eslint"
       }
     }
   },
-  "defaultProject": "app"
+  "defaultProject": "cw"
 }

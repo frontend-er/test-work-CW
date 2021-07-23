@@ -4,20 +4,16 @@
  */
 
 import * as express from 'express';
-import { getAlls } from "./app/db";
+import { getData } from "./app/db.repository";
 
 const app = express();
 
 app.get('/api', (req, res) => {
-  res.send(getAlls());
+  return res.send(getData());
 });
 
-
-
-const port = process.env.port || 3333;
+const port = process.env.port || 4201;
 const server = app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}/api`);
 });
 server.on('error', console.error);
-
-
